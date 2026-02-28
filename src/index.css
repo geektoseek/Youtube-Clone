@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+* {
+    font-family: sans-serif;
+}
+
+.small-sidebar {
+    width: 5% !important;
+    transition: all 0.5s ease-in-out;
+}
+
+.small-sidebar p {
+    display: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.small-sidebar h3 {
+    display: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.small-sidebar hr {
+    width: 50%;
+    transition: all 0.5s ease-in-out;
+    margin-bottom: 25px;
+}
+
+.container {
+    padding-left: 17%;
+    background: #f9f9f9;
+    padding-right: 2%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.large-container {
+    padding-left: 7%;
+    margin-left: auto;
+    margin-right: auto;
+}

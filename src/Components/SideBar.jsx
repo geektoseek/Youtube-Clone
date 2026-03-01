@@ -14,43 +14,43 @@ import tom from '../assets/tom.png'
 import cameron from '../assets/cameron.png'
 import megan from '../assets/megan.png'
 
-const SideBar = ({ sidebar }) => {
+const SideBar = ({ sidebar, category, setCategory }) => {
     return (
         <div className={`bg-white w-2/12 h-screen px-[2%] fixed top-0 pt-20 sidebar ${sidebar ? "" : "small-sidebar"}`}>
             <div className="shortCutlinks">
-                <div className="sidelinks flex items-center gap-5 w-fit flex-wrap cursor-pointer mb-5">
+                <div onclick={() => setCategory(0)} className={`sidelinks flex items-center gap-5 w-fit flex-wrap cursor-pointer mb-5 ${category === 0 ? "active" : ""}`}>
                     <img src={home} alt="" className='w-5 mr-5' />
                     <p>Home</p>
                 </div>
-                <div className="sidelinks flex items-center gap-5 w-fit flex-wrap cursor-pointer mb-5">
+                <div onClick={() => setCategory(20)} className={`sidelinks flex items-center gap-5 w-fit flex-wrap cursor-pointer mb-5 ${category === 20 ? "active" : ""}`}>
                     <img src={game_icon} alt="" className='w-5 mr-5' />
                     <p>Gaming</p>
                 </div>
-                <div className="sidelinks flex items-center gap-5 w-fit flex-wrap cursor-pointer mb-5">
+                <div onClick={() => setCategory(2)} className={`sidelinks flex items-center gap-5 w-fit flex-wrap cursor-pointer mb-5 ${category === 2 ? "active" : ""}`}>
                     <img src={automobile} alt="" className='w-5 mr-5' />
                     <p>Automobiles</p>
                 </div>
-                <div className="sidelinks flex items-center gap-5 w-fit flex-wrap cursor-pointer mb-5">
+                <div onClick={() => setCategory(17)} className={`sidelinks flex items-center gap-5 w-fit flex-wrap cursor-pointer mb-5 ${category === 17 ? "active" : ""}`}>
                     <img src={sports} alt="" className='w-5 mr-5' />
                     <p>Sports</p>
                 </div>
-                <div className="sidelinks flex items-center gap-5 w-fit flex-wrap cursor-pointer mb-5">
+                <div onClick={() => setCategory(24)} className={`sidelinks flex items-center gap-5 w-fit flex-wrap cursor-pointer mb-5 ${category === 24 ? "active" : ""}`}>
                     <img src={entertainment} alt="" className='w-5 mr-5' />
                     <p>Entertainment</p>
                 </div>
-                <div className="sidelinks flex items-center gap-5 w-fit flex-wrap cursor-pointer mb-5">
+                <div onClick={() => setCategory(28)} className={`sidelinks flex items-center gap-5 w-fit flex-wrap cursor-pointer mb-5 ${category === 28 ? "active" : ""}`}>
                     <img src={tech} alt="" className='w-5 mr-5' />
                     <p>Technology</p>
                 </div>
-                <div className="sidelinks flex items-center gap-5 w-fit flex-wrap cursor-pointer mb-5">
+                <div onClick={() => setCategory(10)} className={`sidelinks flex items-center gap-5 w-fit flex-wrap cursor-pointer mb-5 ${category === 10 ? "active" : ""}`}>
                     <img src={music} alt="" className='w-5 mr-5' />
                     <p>Music</p>
                 </div>
-                <div className="sidelinks flex items-center gap-5 w-fit flex-wrap cursor-pointer mb-5">
+                <div onClick={() => setCategory(22)} className={`sidelinks flex items-center gap-5 w-fit flex-wrap cursor-pointer mb-5 ${category === 22 ? "active" : ""}`}>
                     <img src={blog} alt="" className='w-5 mr-5' />
                     <p>Blogs</p>
                 </div>
-                <div className="sidelinks flex items-center gap-5 w-fit flex-wrap cursor-pointer mb-5">
+                <div onClick={() => setCategory(25)} className={`sidelinks flex items-center gap-5 w-fit flex-wrap cursor-pointer mb-5 ${category === 25 ? "active" : ""}`}>
                     <img src={newss} alt="" className='w-5 mr-5' />
                     <p>News</p>
                 </div>
@@ -79,7 +79,7 @@ const SideBar = ({ sidebar }) => {
                     <p>5-Mintutes Craft</p>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

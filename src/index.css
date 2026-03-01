@@ -40,3 +40,8 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.active img {
+    padding-bottom: 2px;
+    border-bottom: 3px solid red;
+}

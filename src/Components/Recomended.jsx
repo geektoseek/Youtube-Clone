@@ -15,13 +15,86 @@ const Recomended = () => {
         <>
             <div className="recomended basis-[30%]">
                 <div className="side-video-list flex justify-between mb-2">
-                    <img src={thumbnail1} alt="" className='basis-[49%] w-2/4 ' />
+                    <img src={thumbnail1} alt="" className='basis-[49%] w-2/4 rounded-sm' />
                     <div className="video-info basis-[49%]">
-                        <h4>Best project by zero in react js</h4>
+                        <h4 className='font-bold text-lg mb-1 text-black'>Best project by zero in react js with + tailwind and also using some other technology.</h4>
                         <p>Zero World</p>
                         <p>100k Views</p>
                     </div>
                 </div>
+
+                <div className="side-video-list flex justify-between mb-2">
+                    <img src={thumbnail2} alt="" className='basis-[49%] w-2/4 rounded-sm' />
+                    <div className="video-info basis-[49%]">
+                        <h4 className='font-bold text-lg mb-1 text-black'>Best project by zero in react js with + tailwind and also using some other technology.</h4>
+                        <p>Zero World</p>
+                        <p>100k Views</p>
+                    </div>
+                </div>
+
+                <div className="side-video-list flex justify-between mb-2">
+                    <img src={thumbnail3} alt="" className='basis-[49%] w-2/4 rounded-sm' />
+                    <div className="video-info basis-[49%]">
+                        <h4 className='font-bold text-lg mb-1 text-black'>Best project by zero in react js with + tailwind and also using some other technology.</h4>
+                        <p>Zero World</p>
+                        <p>100k Views</p>
+                    </div>
+                </div>
+
+                <div className="side-video-list flex justify-between mb-2">
+                    <img src={thumbnail4} alt="" className='basis-[49%] w-2/4 rounded-sm' />
+                    <div className="video-info basis-[49%]">
+                        <h4 className='font-bold text-lg mb-1 text-black'>Best project by zero in react js with + tailwind and also using some other technology.</h4>
+                        <p>Zero World</p>
+                        <p>100k Views</p>
+                    </div>
+                </div>
+
+                <div className="side-video-list flex justify-between mb-2">
+                    <img src={thumbnail5} alt="" className='basis-[49%] w-2/4 rounded-sm' />
+                    <div className="video-info basis-[49%]">
+                        <h4 className='font-bold text-lg mb-1 text-black'>Best project by zero in react js with + tailwind and also using some other technology.</h4>
+                        <p>Zero World</p>
+                        <p>100k Views</p>
+                    </div>
+                </div>
+
+                <div className="side-video-list flex justify-between mb-2">
+                    <img src={thumbnail6} alt="" className='basis-[49%] w-2/4 rounded-sm' />
+                    <div className="video-info basis-[49%]">
+                        <h4 className='font-bold text-lg mb-1 text-black'>Best project by zero in react js with + tailwind and also using some other technology.</h4>
+                        <p>Zero World</p>
+                        <p>100k Views</p>
+                    </div>
+                </div>
+
+                <div className="side-video-list flex justify-between mb-2">
+                    <img src={thumbnail7} alt="" className='basis-[49%] w-2/4 rounded-sm' />
+                    <div className="video-info basis-[49%]">
+                        <h4 className='font-bold text-lg mb-1 text-black'>Best project by zero in react js with + tailwind and also using some other technology.</h4>
+                        <p>Zero World</p>
+                        <p>100k Views</p>
+                    </div>
+                </div>
+
+                <div className="side-video-list flex justify-between mb-2">
+                    <img src={thumbnail8} alt="" className='basis-[49%] w-2/4 rounded-sm' />
+                    <div className="video-info basis-[49%]">
+                        <h4 className='font-bold text-lg mb-1 text-black'>Best project by zero in react js with + tailwind and also using some other technology.</h4>
+                        <p>Zero World</p>
+                        <p>100k Views</p>
+                    </div>
+                </div>
+
+                <div className="side-video-list flex justify-between mb-2">
+                    <img src={thumbnail1} alt="" className='basis-[49%] w-2/4 rounded-sm' />
+                    <div className="video-info basis-[49%]">
+                        <h4 className='font-bold text-lg mb-1 text-black'>Best project by zero in react js with + tailwind and also using some other technology.</h4>
+                        <p>Zero World</p>
+                        <p>100k Views</p>
+                    </div>
+                </div>
+
             </div>
         </>
     )

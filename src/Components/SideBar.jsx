@@ -54,7 +54,7 @@ const SideBar = ({ sidebar }) => {
                     <img src={newss} alt="" className='w-5 mr-5' />
                     <p>News</p>
                 </div>
-                <hr className='border-0 h-[1px] bg-[#ccc] w-[85%]' />
+                <hr className='border-0 h-px bg-[#ccc] w-[85%]' />
             </div>
             <div className="subs_list">
                 <h3 className='text-lg my-5 mx-0 text-[#5a5a5a]'>Subscribed</h3>

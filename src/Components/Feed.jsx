@@ -3,16 +3,14 @@ import { Link } from 'react-router-dom'
 import { myAPI, value_convertor } from '../data'
 import moment from 'moment'
 
-const Feed = ({ cateory }) => {
+const Feed = ({ category }) => {
 
     const [data, setData] = useState([]);
 
     const fetchData = async () => {
-        const videoList = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&videoCategoryId=${cateory}&key=${myAPI}`;
+        const videoList = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&videoCategoryId=${category}&maxResults=500&key=${myAPI}`;
         await fetch(videoList)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
+            .then(response => response.json()).then(data => {
                 if (data.items) {
                     setData(data.items)
                 }
@@ -21,7 +19,7 @@ const Feed = ({ cateory }) => {
 
     useEffect(() => {
         fetchData();
-    }, [cateory])
+    }, [category])
 
     return (
         <>

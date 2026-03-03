@@ -8,11 +8,12 @@ import share from '../assets/share.png'
 import jack from '../assets/jack.png'
 import user_profile from '../assets/user_profile.jpg'
 
-const PlayVideo = () => {
+const PlayVideo = ({ videoId }) => {
     return (
         <>
             <div className="play-video basis-[69%]">
-                <video src={video1} controls muted autoPlay className='w-full'></video>
+                {/* <video src={video1} controls muted autoPlay className='w-full'></video> */}
+                <iframe className='w-full h-[36vw]' src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                 <h3 className='mt-2.5 font-semibold text-2xl'>The Best thing to remember the code Keep Practice On</h3>
                 <div className="play-video-info flex items-center flex-wrap justify-between mt-2.5 text-sm text-[#5a5a5a]">
                     <p>15549 views &bull; 2 days ago</p>

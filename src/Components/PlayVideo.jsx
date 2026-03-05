@@ -15,6 +15,7 @@ const PlayVideo = ({ videoId }) => {
 
     const [apiData, setApiData] = useState(null);
     const [chanelData, setchanelData] = useState(null);
+    const [comments, setComments] = useState([])
 
 
     const fetchVideoData = async () => {
@@ -22,15 +23,25 @@ const PlayVideo = ({ videoId }) => {
         const videoDetails_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${myAPI}`
         await fetch(videoDetails_url).then(res => res.json()).then(data => setApiData(data.items[0]));
     }
-    useEffect(() => {
-        fetchVideoData()
-    }, [videoId])
+    // console.log(`${apiData?.snippet.channelId} working fine everything here`);
 
     const fetchOtherData = async () => {
         const channelData_url = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${apiData.snippet.channelId}&key=${myAPI}`
         await fetch(channelData_url).then(res => res.json()).then(data => setchanelData(data.items[0]))
-    }
 
+        // Comment data fetch
+        const comment_url = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet&maxResults=50&videoId=${videoId}&key=${myAPI}`
+        await fetch(comment_url).then(res => res.json()).then(data => setComments(data.items))
+    }
+    useEffect(() => {
+        fetchVideoData()
+    }, [videoId])
+
+    useEffect(() => {
+        if (apiData) {
+            fetchOtherData();
+        }
+    }, [apiData])
 
 
     return (
@@ -49,81 +60,42 @@ const PlayVideo = ({ videoId }) => {
                 </div>
                 <hr className='my-2.5 border-0 h-1px bg-[#ccc]' />
                 <div className="publisher flex items-center mt-5">
-                    <img src={jack} alt="" className='w-10 rounded-full mr-4' />
+
+                    <img src={chanelData ? chanelData.snippet.thumbnails.default.url : ""} alt="" className='w-10 rounded-full mr-4' />
                     <div className="flex-1 leading-4">
                         <h2 className='text-black text-lg font-semibold'>{apiData ? apiData.snippet.channelTitle : "Dummy Channel"}</h2>
-                        <span className='text-sm text-[#5a5a5a]'>1.4M Subscriber</span>
+                        <span className='text-sm text-[#5a5a5a]'>{chanelData ? value_convertor(chanelData.statistics.subscriberCount) : ""} Subscriber</span>
                     </div>
                     <button className='bg-red-600 text-white py-2 px-8 rounded-sm  outline-none border-0 cursor-pointer'>Subscribe</button>
                 </div>
                 <div className="video-description pl-14 my-3.5 mx-0">
                     <p>{apiData ? apiData.snippet.description.slice(0, 250) : "Description Here"}</p>
-                    <hr />
+                    <hr className='mt-2.5' />
+
                     <h4 className='text-sm text-[#5a5a5a] mt-4'>{apiData ? value_convertor(apiData.statistics.commentCount) : "120010"} Comment</h4>
-                    <div className="comment flex items-start my-5 mx-0 ">
-                        <img src={user_profile} alt="" className='rounded-full w-9 mr-4' />
-                        <div>
-                            <h3 className='mb-0.5 text-sm'>Rnaldo<span className='text-[12px] ml-2 text-[#5a5a5a] font-medium '>1 day ago</span></h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nesciunt velit consequatur assumenda temporibus architecto!</p>
-                            <div className="comment-action flex items-center my-2 mx-0 text-sm">
-                                <img className='rounded-none w-5 mr-1.5 ' src={like} alt="" />
-                                <span className='mr-5 text-[#5a5a5a]'>233</span>
-                                <img className='rounded-none w-5 mr-1.5 ' src={dislike} alt="" />
+                    {comments.map((item, index) => {
+                        const comment = item.snippet.topLevelComment.snippet;
+                        return (
+                            <div key={index} className="comment flex items-start my-5 mx-0">
+                                <img src={comment.authorProfileImageUrl} alt="" className='rounded-full w-9 mr-4' />
+                                <div>
+                                    <h3 className='mb-0.5 text-sm'>
+                                        {comment.authorDisplayName}
+                                        <span className='text-[12px] ml-2 text-[#5a5a5a] font-medium'>
+                                            {moment(comment.publishedAt).fromNow()}
+                                        </span>
+                                    </h3>
+                                    <p>{comment.textDisplay}</p>
+                                    <div className="comment-action flex items-center my-2 mx-0 text-sm">
+                                        <img className='rounded-none w-5 mr-1.5' src={like} alt="" />
+                                        <span className='mr-5 text-[#5a5a5a]'>{comment.likeCount}</span>
+                                        <img className='rounded-none w-5 mr-1.5' src={dislike} alt="" />
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        )
+                    })}
 
-                    <div className="comment flex items-start my-5 mx-0 ">
-                        <img src={user_profile} alt="" className='rounded-full w-9 mr-4' />
-                        <div>
-                            <h3 className='mb-0.5 text-sm'>Ronaldo  <span className='text-[12px] ml-2 text-[#5a5a5a] font-medium '>1 day ago</span></h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nesciunt velit consequatur assumenda temporibus architecto!</p>
-                            <div className="comment-action flex items-center my-2 mx-0 text-sm">
-                                <img className='rounded-none w-5 mr-1.5 ' src={like} alt="" />
-                                <span className='mr-5 text-[#5a5a5a]'>233</span>
-                                <img className='rounded-none w-5 mr-1.5 ' src={dislike} alt="" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="comment flex items-start my-5 mx-0 ">
-                        <img src={user_profile} alt="" className='rounded-full w-9 mr-4' />
-                        <div>
-                            <h3 className='mb-0.5 text-sm'>Ronaldo  <span className='text-[12px] ml-2 text-[#5a5a5a] font-medium '>1 day ago</span></h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nesciunt velit consequatur assumenda temporibus architecto!</p>
-                            <div className="comment-action flex items-center my-2 mx-0 text-sm">
-                                <img className='rounded-none w-5 mr-1.5 ' src={like} alt="" />
-                                <span className='mr-5 text-[#5a5a5a]'>233</span>
-                                <img className='rounded-none w-5 mr-1.5 ' src={dislike} alt="" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="comment flex items-start my-5 mx-0 ">
-                        <img src={user_profile} alt="" className='rounded-full w-9 mr-4' />
-                        <div>
-                            <h3 className='mb-0.5 text-sm'>Ronaldo  <span className='text-[12px] ml-2 text-[#5a5a5a] font-medium '>1 day ago</span></h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nesciunt velit consequatur assumenda temporibus architecto!</p>
-                            <div className="comment-action flex items-center my-2 mx-0 text-sm">
-                                <img className='rounded-none w-5 mr-1.5 ' src={like} alt="" />
-                                <span className='mr-5 text-[#5a5a5a]'>233</span>
-                                <img className='rounded-none w-5 mr-1.5 ' src={dislike} alt="" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="comment flex items-start my-5 mx-0 ">
-                        <img src={user_profile} alt="" className='rounded-full w-9 mr-4' />
-                        <div>
-                            <h3 className='mb-0.5 text-sm'>Ronaldo  <span className='text-[12px] ml-2 text-[#5a5a5a] font-medium '>1 day ago</span></h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nesciunt velit consequatur assumenda temporibus architecto!</p>
-                            <div className="comment-action flex items-center my-2 mx-0 text-sm">
-                                <img className='rounded-none w-5 mr-1.5 ' src={like} alt="" />
-                                <span className='mr-5 text-[#5a5a5a]'>233</span>
-                                <img className='rounded-none w-5 mr-1.5 ' src={dislike} alt="" />
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
             </div>

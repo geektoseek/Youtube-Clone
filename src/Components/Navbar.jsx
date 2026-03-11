@@ -23,7 +23,7 @@ const Navbar = ({ setSideBar }) => {
                         />
                         <Link to="/">
                             <img
-                                className="w-32"
+                                className="w-32 lg:w-20"
                                 src={logo}
                                 alt="logo"
                             />

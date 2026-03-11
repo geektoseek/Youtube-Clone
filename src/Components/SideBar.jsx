@@ -16,7 +16,7 @@ import megan from '../assets/megan.png'
 
 const SideBar = ({ sidebar, category, setCategory }) => {
     return (
-        <div className={`bg-white w-2/12 h-screen px-[2%] fixed top-0 pt-20 sidebar ${sidebar ? "" : "small-sidebar"}`}>
+        <div className={`bg-white w-2/12 h-screen px-[2%] fixed top-0 pt-20 sidebar  ${sidebar ? "" : "small-sidebar"}`}>
             <div className="shortCutlinks">
                 <div onClick={() => setCategory(0)} className={`sidelinks flex items-center gap-5 w-fit flex-wrap cursor-pointer mb-5 ${category === 0 ? "active" : ""}`}>
                     <img src={home} alt="" className='w-5 mr-5' />
